@@ -170,3 +170,14 @@ firewall-cmd --reload
 
 #----------------------------- CONFIGURAR SNAPPER ------------------------------#
 cp -fv snapper_root /etc/snapper/configs/root
+
+
+#------------------------------------ FIM -------------------------------------#
+
+dialog --erase-on-exit --yesno "Chegamos ao fim. É necessário reiniciar o computador para aplicar as alterações. Deseja reiniciar agora?" 8 60
+REBOOT=$?
+case $REBOOT in
+    0) systemctl reboot;;
+    1) echo "Por favor reinicie o sistema assim que possível.";;
+    255) echo "[ESC] key pressed.";;
+esac
