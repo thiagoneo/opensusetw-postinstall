@@ -1,0 +1,12 @@
+com.brave.Browser
+io.github.realmazharhussain.GdmSettings
+me.iepure.devtoolbox
+com.github.tchx84.Flatseal
+de.haeckerfelix.Fragments
+com.mattjakeman.ExtensionManager
+org.inkscape.Inkscape
+org.kde.kolourpaint
+io.github.vikdevelop.SaveDesktop
+org.telegram.desktop
+org.mozilla.Thunderbird
+io.github.flattool.Warehouse

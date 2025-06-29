@@ -1,0 +1,13 @@
+adw-gtk3
+grub-customizer
+net-tools-deprecated
+papers
+papers-lang
+papirus-folders
+papirus-icon-theme
+remmina
+remmina-plugin-rdp
+remmina-plugin-vnc
+traceroute
+MozillaFirefox
+MozillaFirefox-branding-upstream

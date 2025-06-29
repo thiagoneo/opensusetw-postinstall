@@ -1,0 +1,9 @@
+https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v42.shell-extension.zip
+https://extensions.gnome.org/extension-data/appmenu-is-backfthx.v9.shell-extension.zip
+https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v68.shell-extension.zip
+https://extensions.gnome.org/extension-data/clipboard-indicatortudmotu.com.v68.shell-extension.zip
+https://extensions.gnome.org/extension-data/dash-to-dockmicxgx.gmail.com.v100.shell-extension.zip
+https://extensions.gnome.org/extension-data/gnome-fuzzy-app-searchgnome-shell-extensions.Czarlie.gitlab.com.v26.shell-extension.zip
+https://extensions.gnome.org/extension-data/gsconnectandyholmes.github.io.v62.shell-extension.zip
+https://extensions.gnome.org/extension-data/just-perfection-desktopjust-perfection.v34.shell-extension.zip
+https://extensions.gnome.org/extension-data/rounded-window-cornersfxgn.v12.shell-extension.zip
