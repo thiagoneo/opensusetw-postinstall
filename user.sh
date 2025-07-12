@@ -8,12 +8,6 @@
 # E-mail: sousathiago@protonmail.com              #
 ###################################################
 
-# Verificar se o usuário é o root
-if [[ $EUID -ne 0 ]]; then
-   echo "Este script precisa ser executado como root."
-   exit 1
-fi
-
 #--------------------------------- VARIÁVEIS ----------------------------------#
 SCR_DIRECTORY=`pwd`
 STANDARD_USER=ts
