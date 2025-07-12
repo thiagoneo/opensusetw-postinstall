@@ -26,6 +26,8 @@ STEAM_VERSION="flatpak"
 #  green grey indigo magenta nordic orange palebrown paleorange pink red teal violet white yaru yellow
 FOLDER_COLORS="adwaita"
 
+killall gnome-software
+
 #--------------------------- ATUALIZAR REPOSITÓRIOS ---------------------------#
 zypper refresh
 
