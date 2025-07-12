@@ -29,7 +29,7 @@ FOLDER_COLORS="adwaita"
 killall gnome-software
 
 #--------------------------- ATUALIZAR REPOSITÓRIOS ---------------------------#
-zypper refresh
+zypper --gpg-auto-import-keys refresh
 
 #------------------- ADICIONAR REPOSITÓRIOS DE TERCEIROS ----------------------#
 echo "Adicionando repositórios de terceiros..."
@@ -41,7 +41,7 @@ https://download.opensuse.org/repositories/home:Dead_Mozay/openSUSE_Tumbleweed/h
 # zypper --gpg-auto-import-keys ar -cfp 90 \
 # http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
 
-zypper refresh
+zypper --gpg-auto-import-keys refresh
 
 #------------------- HABILITAR DOWNLOADS PARALELOS ZYPPER ---------------------#
 sudo tee /etc/profile.d/opensuse_repos.sh > /dev/null << 'EOF'
