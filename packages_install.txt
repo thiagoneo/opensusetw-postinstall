@@ -5,9 +5,5 @@ papers
 papers-lang
 papirus-folders
 papirus-icon-theme
-remmina
-remmina-plugin-rdp
-remmina-plugin-vnc
+tpm2.0-tools
 traceroute
-MozillaFirefox
-MozillaFirefox-branding-upstream

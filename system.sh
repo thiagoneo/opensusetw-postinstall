@@ -20,6 +20,11 @@ ISO_DIR="$USER_HOME/etc/ISOs"
 PACKAGES_REMOVE="packages_remove.txt"
 PACKAGES_INSTALL="packages_install.txt"
 FLATPAK_INSTALL="flatpak_install.txt"
+STEAM_VERSION="flatpak"
+# Cor das pastas do tema Papirus
+# Opções disponíveis: adwaita black blue bluegrey breeze brown carmine cyan darkcyan deeporange
+#  green grey indigo magenta nordic orange palebrown paleorange pink red teal violet white yaru yellow
+FOLDER_COLORS="adwaita"
 
 #--------------------------- ATUALIZAR REPOSITÓRIOS ---------------------------#
 zypper refresh
@@ -31,8 +36,8 @@ zypper --gpg-auto-import-keys ar \
 https://download.opensuse.org/repositories/home:Dead_Mozay/openSUSE_Tumbleweed/home:Dead_Mozay.repo
 
 # Packman Essentials (codecs multimídia)
-zypper --gpg-auto-import-keys ar -cfp 90 \
-http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
+# zypper --gpg-auto-import-keys ar -cfp 90 \
+# http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
 
 zypper refresh
 
@@ -105,18 +110,49 @@ git clone https://github.com/mrbvrz/segoe-ui-linux.git
 cd segoe-ui-linux
 bash install.sh
 rm -fv /usr/share/fonts/Microsoft/TrueType/SegoeUI/seguiemj.ttf
+# Atualizar o cache de fontes
+echo "Atualizando cache de fontes..."
+fc-cache --force
+cd ${SCR_DIRECTORY}
+
+#--------------------------- INSTALAR OUTRAS FONTES ---------------------------#
+cd src
+# Red Hat Display
+wget -c https://font.download/dl/font/red-hat-display-2.zip -O RedHatDisplay.zip
+mkdir -p /usr/share/fonts/truetype/RedHatDisplay/
+unzip RedHatDisplay.zip -d /usr/share/fonts/truetype/RedHatDisplay/
+chown -R root:root /usr/share/fonts/truetype/RedHatDisplay/
+chmod 644 /usr/share/fonts/truetype/RedHatDisplay/*
+
+# Space Mono
+wget -c https://font.download/dl/font/space-mono.zip -O SpaceMono.zip
+mkdir -p /usr/share/fonts/truetype/SpaceMono
+unzip SpaceMono.zip -d /usr/share/fonts/truetype/SpaceMono/
+chown -R root:root /usr/share/fonts/truetype/SpaceMono/
+chmod 644 /usr/share/fonts/truetype/SpaceMono/*
+
+# Atualizar o cache de fontes
+echo "Atualizando cache de fontes..."
 fc-cache --force
 cd ${SCR_DIRECTORY}
 
 #-------------------------- INSTALAR CODECS MULTIMÍDIA ------------------------#
-zypper  dist-upgrade -y --from packman-essentials --allow-downgrade --allow-vendor-change
+# zypper  dist-upgrade -y --from packman-essentials --allow-downgrade --allow-vendor-change
 
-zypper install -y --from packman-essentials ffmpeg gstreamer-plugins-bad \
-gstreamer-plugins-libav gstreamer-plugins-ugly libavcodec58 libavdevice58 \
-libavfilter7 libavformat58 libavresample4 libavutil56 vlc-codecs
+# zypper install -y --from packman-essentials ffmpeg gstreamer-plugins-bad \
+# gstreamer-plugins-libav gstreamer-plugins-ugly libavcodec58 libavdevice58 \
+# libavfilter7 libavformat58 libavresample4 libavutil56 vlc-codecs
 
 #------------------------------- INSTALAR STEAM -------------------------------#
-zypper install -y steam
+if [[ "$STEAM_VERSION" == "flatpak" ]]; then
+    echo "Instalando Steam via Flatpak..."
+    flatpak -y install flathub com.valvesoftware.Steam
+elif [[ "$STEAM_VERSION" == "rpm" ]]; then
+    echo "Instalando Steam via RPM..."
+    zypper install -y steam
+else
+    echo "Versão do Steam desconhecida. Por favor, verifique a variável STEAM_VERSION."
+fi
 
 #---------------------- INSTALAR SUPORTE A VIRTUALIZAÇÃO ----------------------#
 zypper install -y libvirt virt-manager
@@ -167,6 +203,10 @@ firewall-cmd --set-default-zone=home
 firewall-cmd --reload
 firewall-cmd --add-service=kdeconnect --permanent
 firewall-cmd --reload
+
+#--------------------- CUSTOMIZAR COR DAS PASTAS PAPIRUS -----------------------#
+echo "Configurando cores das pastas do Papirus..."
+papirus-folders -C ${FOLDER_COLORS}
 
 #----------------------------- CONFIGURAR SNAPPER ------------------------------#
 cp -fv snapper_root /etc/snapper/configs/root

@@ -26,4 +26,5 @@ vinagre
 xscreensaver
 xterm
 xtermset
+MozillaFirefox
 MozillaFirefox-branding-openSUSE

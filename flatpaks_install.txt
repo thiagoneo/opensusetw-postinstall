@@ -8,5 +8,9 @@ org.inkscape.Inkscape
 org.kde.kolourpaint
 io.github.vikdevelop.SaveDesktop
 org.telegram.desktop
+org.mozilla.firefox
 org.mozilla.Thunderbird
+org.remmina.Remmina
+org.gtk.Gtk3theme.adw-gtk3
+org.gtk.Gtk3theme.adw-gtk3-dark
 io.github.flattool.Warehouse
