@@ -17,8 +17,8 @@ SCR_DIRECTORY=`pwd`
 STANDARD_USER=ts
 USER_HOME=$(getent passwd "$STANDARD_USER" | cut -d: -f6)
 ISO_DIR="$USER_HOME/etc/ISOs"
-PACKAGES_REMOVE="packages_remove.txt"
-PACKAGES_INSTALL="packages_install.txt"
+PACKAGES_REMOVE="packages_remove_gnome.txt"
+PACKAGES_INSTALL="packages_install_gnome.txt"
 FLATPAK_INSTALL="flatpak_install.txt"
 STEAM_VERSION="flatpak"
 # Cor das pastas do tema Papirus
