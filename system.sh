@@ -143,6 +143,10 @@ echo "Atualizando cache de fontes..."
 fc-cache --force
 cd ${SCR_DIRECTORY}
 
+#-------------------------- INSTALAR KERNEL LINUX LTS -------------------------#
+zypper install -y kernel-longterm
+zypper remove -y --clean-deps kernel-default
+
 #-------------------------- INSTALAR CODECS MULTIMÍDIA ------------------------#
 # zypper  dist-upgrade -y --from packman-essentials --allow-downgrade --allow-vendor-change
 
