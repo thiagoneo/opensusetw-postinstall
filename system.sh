@@ -194,15 +194,18 @@ flatpak -y install flathub $(cat "${FLATPAK_INSTALL}")
 #------------------------ CUSTOMIZAR APARÊNCIA DO GRUB ------------------------#
 cd src
 git clone https://github.com/vinceliuice/grub2-themes.git
-mv background-stylish.jpg grub2-themes/backgrounds/1080p/background-stylish.jpg
+# Se quiser a tela do GRUB com fundo preto, descomente a linha abaixo
+# mv background-stylish.jpg grub2-themes/backgrounds/1080p/background-stylish.jpg
 cd grub2-themes
 bash install.sh -t stylish
+# Para ajustar a resolução, substitua "1600x900" abaixo pela resolução do seu monitor
 sudo sed -i 's/^GRUB_GFXMODE=1920x1080,auto$/GRUB_GFXMODE=1600x900,auto/' /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg
 cd ${SCR_DIRECTORY}
 
 #-------------------------- INSTALAR CERTIFICADO CA ---------------------------#
-trust anchor --store ca.crt
+# Instalar certificados CA adicionais
+trust anchor --store *.crt
 
 #------------------------- CONFIGURAÇÕES DO FIREWALL ---------------------------#
 echo "🛡️ Configurando Firewall..."
