@@ -2,6 +2,7 @@
 
 ###################################################
 # Script de Pós-instalação do openSUSE Tumbleweed #
+# com ambiente gráfico GNOME                      #
 # Autor: Thiago de S. Ferreira                    #
 # E-mail: sousathiago@protonmail.com              #
 ###################################################
@@ -14,8 +15,6 @@ fi
 
 #--------------------------------- VARIÁVEIS ----------------------------------#
 SCR_DIRECTORY=`pwd`
-STANDARD_USER=ts
-USER_HOME=$(getent passwd "$STANDARD_USER" | cut -d: -f6)
 ISO_DIR="$USER_HOME/etc/ISOs"
 PACKAGES_REMOVE="packages_remove.txt"
 PACKAGES_INSTALL="packages_install.txt"
@@ -25,6 +24,12 @@ STEAM_VERSION="flatpak"
 # Opções disponíveis: adwaita black blue bluegrey breeze brown carmine cyan darkcyan deeporange
 #  green grey indigo magenta nordic orange palebrown paleorange pink red teal violet white yaru yellow
 FOLDER_COLORS="adwaita"
+STANDARD_USER=$(\
+    dialog --no-cancel --title "Username"\
+        --inputbox "Digite o seu usuário padrão:" 8 40\
+    3>&1 1>&2 2>&3 3>&- \
+)
+USER_HOME=$(getent passwd "$STANDARD_USER" | cut -d: -f6)
 
 killall gnome-software
 
