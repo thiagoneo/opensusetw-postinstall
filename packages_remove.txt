@@ -9,7 +9,6 @@ google-noto-coloremoji-fonts
 grub2-branding-openSUSE
 icewm-default
 imaging
-kernel-default
 kernel-firmware-all
 opensuse-welcome
 patterns-base-basic_desktop
@@ -26,5 +25,4 @@ vinagre
 xscreensaver
 xterm
 xtermset
-MozillaFirefox
 MozillaFirefox-branding-openSUSE
