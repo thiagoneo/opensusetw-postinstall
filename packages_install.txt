@@ -7,3 +7,5 @@ papirus-folders
 papirus-icon-theme
 tpm2.0-tools
 traceroute
+MozillaFirefox
+MozillaFirefox-branding-upstream
