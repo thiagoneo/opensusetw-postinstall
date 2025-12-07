@@ -1,5 +1,7 @@
 adw-gtk3
+compsize
 grub-customizer
+libgthread-2_0-0
 net-tools-deprecated
 papers
 papers-lang
@@ -9,4 +11,3 @@ tpm2.0-tools
 traceroute
 MozillaFirefox
 MozillaFirefox-branding-upstream
-libgthread-2_0-0

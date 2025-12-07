@@ -19,7 +19,7 @@ ISO_DIR="$USER_HOME/etc/ISOs"
 PACKAGES_REMOVE="packages_remove.txt"
 PACKAGES_INSTALL="packages_install.txt"
 FLATPAK_INSTALL="flatpak_install.txt"
-STEAM_VERSION="flatpak"
+STEAM_VERSION="rpm"
 # Cor das pastas do tema Papirus
 # Opções disponíveis: adwaita black blue bluegrey breeze brown carmine cyan darkcyan deeporange
 #  green grey indigo magenta nordic orange palebrown paleorange pink red teal violet white yaru yellow
@@ -43,8 +43,8 @@ zypper --gpg-auto-import-keys ar \
 https://download.opensuse.org/repositories/home:Dead_Mozay/openSUSE_Tumbleweed/home:Dead_Mozay.repo
 
 # Packman Essentials (codecs multimídia)
-# zypper --gpg-auto-import-keys ar -cfp 90 \
-# http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/Essentials packman-essentials
+zypper --gpg-auto-import-keys ar -cfp 90 \
+http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman
 
 zypper --gpg-auto-import-keys refresh
 
@@ -74,6 +74,19 @@ if ! command -v git &> /dev/null; then
     zypper install -y git
 fi
 
+#-------------------------- INSTALAR KERNEL LINUX LTS -------------------------#
+zypper install -y kernel-longterm
+zypper remove -y --clean-deps kernel-default
+
+#------------------------- INSTALAR PACOTES DIVERSOS --------------------------#
+zypper install -y $(cat "${PACKAGES_INSTALL}")
+
+#------------------------ INSTALAR PACOTES RPM LOCAIS -------------------------#
+echo "Baixando pacotes..."
+wget -c https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.4.3.1736_x86_64.rpm -P rpms
+echo "📦 Instalando pacotes RPM locais..."
+zypper --no-gpg-checks install -y rpms/*.rpm
+
 #------------------------ REMOVER PACOTES INDESEJADOS -------------------------#
 if [[ -f "$PACKAGES_REMOVE" ]]; then
     echo "🔧 Removendo pacotes..."
@@ -86,15 +99,6 @@ if [[ -f "$PACKAGES_REMOVE" ]]; then
 else
     echo "⚠️  Arquivo '$PACKAGES_REMOVE' não encontrado. Pulando etapa de remoção e bloqueio."
 fi
-
-#------------------------- INSTALAR PACOTES DIVERSOS --------------------------#
-zypper install -y $(cat "${PACKAGES_INSTALL}")
-
-#------------------------ INSTALAR PACOTES RPM LOCAIS -------------------------#
-echo "Baixando pacotes..."
-wget -c https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.4.3.1736_x86_64.rpm -P rpms
-echo "📦 Instalando pacotes RPM locais..."
-zypper --no-gpg-checks install -y rpms/*.rpm
 
 #--------------------------- DEFINIR NOVO HOSTNAME ----------------------------#
 OLD_HOSTNAME=`hostname`
@@ -143,16 +147,12 @@ echo "Atualizando cache de fontes..."
 fc-cache --force
 cd ${SCR_DIRECTORY}
 
-#-------------------------- INSTALAR KERNEL LINUX LTS -------------------------#
-zypper install -y kernel-longterm
-zypper remove -y --clean-deps kernel-default
-
 #-------------------------- INSTALAR CODECS MULTIMÍDIA ------------------------#
-# zypper  dist-upgrade -y --from packman-essentials --allow-downgrade --allow-vendor-change
+zypper  dist-upgrade -y --from packman --allow-downgrade --allow-vendor-change
 
-# zypper install -y --from packman-essentials ffmpeg gstreamer-plugins-bad \
-# gstreamer-plugins-libav gstreamer-plugins-ugly libavcodec58 libavdevice58 \
-# libavfilter7 libavformat58 libavresample4 libavutil56 vlc-codecs
+zypper install -y --from packman ffmpeg gstreamer-plugins-bad \
+gstreamer-plugins-libav gstreamer-plugins-ugly libavcodec58 libavdevice58 \
+libavfilter7 libavformat58 libavresample4 libavutil56 vlc-codecs
 
 #------------------------------- INSTALAR STEAM -------------------------------#
 if [[ "$STEAM_VERSION" == "flatpak" ]]; then
