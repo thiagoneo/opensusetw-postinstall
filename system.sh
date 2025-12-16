@@ -18,7 +18,7 @@ SCR_DIRECTORY=`pwd`
 ISO_DIR="$USER_HOME/etc/ISOs"
 PACKAGES_REMOVE="packages_remove.txt"
 PACKAGES_INSTALL="packages_install.txt"
-FLATPAK_INSTALL="flatpak_install.txt"
+FLATPAK_INSTALL="flatpaks_install.txt"
 STEAM_VERSION="rpm"
 # Cor das pastas do tema Papirus
 # Opções disponíveis: adwaita black blue bluegrey breeze brown carmine cyan darkcyan deeporange
@@ -77,6 +77,10 @@ fi
 #-------------------------- INSTALAR KERNEL LINUX LTS -------------------------#
 zypper install -y kernel-longterm
 zypper remove -y --clean-deps kernel-default
+
+#-------------------- INSTALAR FIREFOX BRANDING UPSTREAM ----------------------#
+zypper install -y MozillaFirefox-branding-upstream
+zypper remove -y --clean-deps MozillaFirefox-branding-openSUSE
 
 #------------------------- INSTALAR PACOTES DIVERSOS --------------------------#
 zypper install -y $(cat "${PACKAGES_INSTALL}")
