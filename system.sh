@@ -14,7 +14,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 #-------------------------- CRIAR SNAPSHOT INICIAL ----------------------------#
-snapper create --description "Snapshot antes de executar script de pós-instalação"
+snapper create --description "$(date '+%Y-%m-%d_%H-%M-%S') - Before running post install script"
 
 #--------------------------------- VARIÁVEIS ----------------------------------#
 SCR_DIRECTORY=`pwd`
