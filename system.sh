@@ -13,6 +13,9 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+#-------------------------- CRIAR SNAPSHOT INICIAL ----------------------------#
+sudo snapper create --description "Snapshot antes de executar script de pós-instalação"
+
 #--------------------------------- VARIÁVEIS ----------------------------------#
 SCR_DIRECTORY=`pwd`
 ISO_DIR="$USER_HOME/etc/ISOs"
@@ -92,6 +95,8 @@ zypper --no-gpg-checks install -y rpms/*.rpm
 #-------------------------- INSTALAR FORTICLIENT VPN --------------------------#
 echo "Baixando Forticlient VPN..."
 zypper --no-gpg-checks install -y https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.4.3.1736_x86_64.rpm
+# Desabilitar inicialização automática do serviço 
+systemctl disable forticlient
 
 #------------------------ REMOVER PACOTES INDESEJADOS -------------------------#
 if [[ -f "$PACKAGES_REMOVE" ]]; then
