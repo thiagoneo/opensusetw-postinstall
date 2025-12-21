@@ -176,26 +176,9 @@ zypper install -y libvirt virt-manager
 usermod -aG libvirt ${STANDARD_USER}
 systemctl enable --now libvirtd
 
-if [ ! -d "$ISO_DIR" ]; then
-    echo "Criando diretório $ISO_DIR"
-    mkdir -p "$ISO_DIR"
-    chmod ${STANDARD_USER}:${STANDARD_USER} ${ISO_DIR}
-fi
-
-# Aplicar permissões de acesso ao emulador
-setfacl -m u:qemu:x "$(dirname "$USER_HOME")"
-setfacl -m u:qemu:x "$USER_HOME"
-setfacl -m u:qemu:x "$USER_HOME/etc"
-setfacl -m u:qemu:rx "$ISO_DIR"
-
 # iniciar rede
 virsh net-start --network default
 virsh net-autostart --network default
-
-# Adicionar pool de ISOs
-virsh pool-define-as --name ISOs --type dir --target $ISO_DIR
-virsh pool-start ISOs
-virsh pool-autostart ISOs
 
 #----------------------------- INSTALAR FLATPAKS ------------------------------#
 flatpak update -y
