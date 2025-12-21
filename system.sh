@@ -14,7 +14,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 #-------------------------- CRIAR SNAPSHOT INICIAL ----------------------------#
-sudo snapper create --description "Snapshot antes de executar script de pós-instalação"
+snapper create --description "Snapshot antes de executar script de pós-instalação"
 
 #--------------------------------- VARIÁVEIS ----------------------------------#
 SCR_DIRECTORY=`pwd`
