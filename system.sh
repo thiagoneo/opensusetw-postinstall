@@ -86,10 +86,12 @@ zypper remove -y --clean-deps MozillaFirefox-branding-openSUSE
 zypper install -y $(cat "${PACKAGES_INSTALL}")
 
 #------------------------ INSTALAR PACOTES RPM LOCAIS -------------------------#
-echo "Baixando pacotes..."
-wget -c https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.4.3.1736_x86_64.rpm -P rpms
 echo "📦 Instalando pacotes RPM locais..."
 zypper --no-gpg-checks install -y rpms/*.rpm
+
+#-------------------------- INSTALAR FORTICLIENT VPN --------------------------#
+echo "Baixando Forticlient VPN..."
+zypper --no-gpg-checks install -y https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.4.3.1736_x86_64.rpm
 
 #------------------------ REMOVER PACOTES INDESEJADOS -------------------------#
 if [[ -f "$PACKAGES_REMOVE" ]]; then
