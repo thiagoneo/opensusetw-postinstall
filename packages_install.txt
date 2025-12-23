@@ -14,8 +14,6 @@ libgthread-2_0-0
 loupe
 lzip
 lzop
-MozillaFirefox
-MozillaFirefox-branding-upstream
 papirus-folders
 papirus-icon-theme
 remmina
