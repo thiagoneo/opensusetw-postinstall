@@ -2,7 +2,6 @@ com.belmoussaoui.Authenticator
 com.bitwarden.desktop
 com.brave.Browser
 com.github.ADBeveridge.Raider
-com.github.fabiocolacio.marker
 com.github.tchx84.Flatseal
 com.mattjakeman.ExtensionManager
 com.poweriso.PowerISO
@@ -10,13 +9,9 @@ de.haeckerfelix.Fragments
 in.srev.guiscrcpy
 io.github.flattool.Warehouse
 io.github.realmazharhussain.GdmSettings
-io.github.vikdevelop.SaveDesktop
-io.github.vmkspv.lenspect
-io.github.zaedus.spider
 me.iepure.devtoolbox
 org.audacityteam.Audacity
 org.geogebra.GeoGebra
-org.gnome.Shotwell
 org.inkscape.Inkscape
 org.kde.kolourpaint
 org.kde.krita
