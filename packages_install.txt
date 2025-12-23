@@ -3,7 +3,10 @@ arj
 busybox-net-toolspapers
 compsize
 cron
+extension-manager
 file-roller
+flatseal
+Fragments
 grub-customizer
 htop
 lhasa
@@ -15,6 +18,10 @@ MozillaFirefox
 MozillaFirefox-branding-upstream
 papirus-folders
 papirus-icon-theme
+remmina
+remmina-plugin-rdp
+remmina-plugin-spice
+remmina-plugin-vnc
 rzip
 syncthing
 tpm2.0-tools
