@@ -7,3 +7,4 @@ https://extensions.gnome.org/extension-data/gnome-fuzzy-app-searchgnome-shell-ex
 https://extensions.gnome.org/extension-data/gsconnectandyholmes.github.io.v71.shell-extension.zip
 https://extensions.gnome.org/extension-data/just-perfection-desktopjust-perfection.v35.shell-extension.zip
 https://extensions.gnome.org/extension-data/rounded-window-cornersfxgn.v14.shell-extension.zip
+https://extensions.gnome.org/extension-data/caffeinepatapon.info.v59.shell-extension.zip
