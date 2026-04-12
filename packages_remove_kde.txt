@@ -1,8 +1,3 @@
-cheese
-evolution
-gnome-maps
-gnome-packagekit
-gnome-remote-desktop
 google-noto-coloremoji-fonts
 grub2-branding-openSUSE
 icewm-default
@@ -12,12 +7,11 @@ opensuse-welcome
 patterns-base-basic_desktop
 patterns-desktop-imaging
 patterns-desktop-multimedia
-patterns-gnome-gnome_games
-patterns-gnome-gnome_imaging
-patterns-gnome-gnome_office
-polari
-transmission-gtk
-vinagre
+patterns-kde-kde_games
+patterns-kde-kde_imaging
+patterns-kde-kde_office
+patterns-kde-kde_pim
+skanlite
 xscreensaver
 xterm
 xtermset

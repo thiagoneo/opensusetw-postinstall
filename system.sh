@@ -19,14 +19,10 @@ snapper create --description "$(date '+%Y-%m-%d_%H-%M-%S') - Before running post
 #--------------------------------- VARIÁVEIS ----------------------------------#
 SCR_DIRECTORY=`pwd`
 ISO_DIR="$USER_HOME/etc/ISOs"
-PACKAGES_REMOVE="packages_remove.txt"
-PACKAGES_INSTALL="packages_install.txt"
-FLATPAK_INSTALL="flatpaks_install.txt"
 STEAM_VERSION="rpm"
 # Cor das pastas do tema Papirus
 # Opções disponíveis: adwaita black blue bluegrey breeze brown carmine cyan darkcyan deeporange
 #  green grey indigo magenta nordic orange palebrown paleorange pink red teal violet white yaru yellow
-FOLDER_COLORS="adwaita"
 STANDARD_USER=$(\
     dialog --no-cancel --title "Username"\
         --inputbox "Digite o seu usuário padrão:" 8 40\
@@ -34,7 +30,35 @@ STANDARD_USER=$(\
 )
 USER_HOME=$(getent passwd "$STANDARD_USER" | cut -d: -f6)
 
-killall gnome-software
+# ------------------------- SELECIONAR AMBIENTE GRÁFICO -------------------------#
+DESKTOP_CHOICE=$(dialog --no-cancel --title "Ambiente gráfico" \
+    --menu "Selecione o ambiente gráfico:" 10 50 2 \
+    1 "GNOME" \
+    2 "KDE Plasma" \
+    3>&1 1>&2 2>&3 3>&-)
+
+case "$DESKTOP_CHOICE" in
+    1) export DESKTOP="GNOME";;
+    2) export DESKTOP="KDE";;
+    *) echo "Nenhuma opção selecionada."; exit 1;;
+esac
+
+if [[ "$DESKTOP" == "GNOME" ]]; then
+    killall gnome-software
+    PACKAGES_INSTALL="packages_install_gnome.txt"
+    PACKAGES_REMOVE="packages_remove_gnome.txt"
+    FLATPAK_INSTALL="flatpaks_install_gnome.txt"
+    FOLDER_COLORS="adwaita"
+elif [[ "$DESKTOP" == "KDE" ]]; then
+    killall plasma-discover
+    PACKAGES_INSTALL="packages_install_kde.txt"
+    PACKAGES_REMOVE="packages_remove_kde.txt"
+    FLATPAK_INSTALL="flatpaks_install_kde.txt"
+    FOLDER_COLORS="breeze"
+else
+    echo "Ambiente gráfico desconhecido. Por favor, selecione GNOME ou KDE."
+    exit 1
+fi
 
 #--------------------------- ATUALIZAR REPOSITÓRIOS ---------------------------#
 zypper --gpg-auto-import-keys refresh
@@ -218,7 +242,6 @@ papirus-folders -C ${FOLDER_COLORS}
 
 #----------------------------- CONFIGURAR SNAPPER ------------------------------#
 cp -fv snapper_root /etc/snapper/configs/root
-
 
 #------------------------------------ FIM -------------------------------------#
 

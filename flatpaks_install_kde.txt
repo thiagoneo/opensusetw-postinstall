@@ -5,16 +5,10 @@ com.github.ADBeveridge.Raider
 com.poweriso.PowerISO
 in.srev.guiscrcpy
 io.github.flattool.Warehouse
-io.github.realmazharhussain.GdmSettings
 me.iepure.devtoolbox
 org.audacityteam.Audacity
 org.geogebra.GeoGebra
 org.inkscape.Inkscape
-org.kde.kolourpaint
-org.kde.krita
 org.mozilla.Thunderbird
 org.musescore.MuseScore
 org.onlyoffice.desktopeditors
-org.telegram.desktop
-org.gtk.Gtk3theme.adw-gtk3
-org.gtk.Gtk3theme.adw-gtk3-dark
